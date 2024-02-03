@@ -3,6 +3,11 @@ import { useRef } from "react";
 import { IoMdSearch } from "react-icons/io";
 import { FaCaretDown, FaCartShopping } from "react-icons/fa6";
 import { FaBars, FaTimes } from "react-icons/fa";
+import DropDown from './DropDown';
+import Carousel from "./Coursole";
+import B1 from '../images/b1.avif';
+import B2 from '../images/b2.avif';
+import B3 from '../images/b3.avif';
 
 const MenuLinks = [
     {
@@ -51,10 +56,15 @@ const DropdownLinks = [
     },
 ];
 const Navbar = ({ handleOrderPopup }) => {
+    const images = [
+        B1,
+        B2,
+        B3,
+    ];
     const [isMenuOpen, setMenuOpen] = useState(false);
 
     const toggleMenu = () => {
-        setMenuOpen(!isMenuOpen);    
+        setMenuOpen(!isMenuOpen);
     };
 
     const closeMenu = () => {
@@ -69,7 +79,7 @@ const Navbar = ({ handleOrderPopup }) => {
                     {/* Logo and Links section */}
                     <div className="flex items-center gap-4">
                         <p className="text-primary font-semibold tracking-widest text-2xl uppercase sm:text-3xl">
-                            SriptGuru
+                            FlipKart
                         </p>
                         {/* Menu Items */}
                         <div className="hidden lg:block">
@@ -149,89 +159,56 @@ const Navbar = ({ handleOrderPopup }) => {
                 </div>
             </div>
             {isMenuOpen && (
-                <div className="fixed top-4 w-full h-full bg-gray-900 z-50">
+                <div className="fixed top-0 w-full h-full bg-gray-900 z-50">
                     <button className='lg:hidden nav-btn right-0 ml-80 mt-4 p-2' onClick={toggleMenu}>
-                            {isMenuOpen ? (
-                                <FaTimes className="w-4" onClick={closeMenu} />
-                            ) : (
-                                <FaBars className="w-4" />
-                            )}
-                        </button>
+                        {isMenuOpen ? (
+                            <FaTimes className="w-4" onClick={closeMenu} />
+                        ) : (
+                            <FaBars className="w-4" />
+                        )}
+                    </button>
                     <div className="flex text-left flex-col gap-4 font-medium my-4 mx-4">
-                        <h1>Home</h1>
-                        <h1>Shop</h1>
-                        <h1>Featured</h1>
-                        <h1>Recommended</h1>
+                        <ul>
+
+                            <li className="flex items-center gap-[2px] font-semibold text-gray-500 dark:hover:text-white py-2">Home</li>
+                            <li className="flex items-center gap-[2px] font-semibold text-gray-500 dark:hover:text-white py-2">Shop</li>
+                            <li className="flex items-center gap-[2px] font-semibold text-gray-500 dark:hover:text-white py-2">Featured</li>
+                            <li className="flex items-center gap-[2px] font-semibold text-gray-500 dark:hover:text-white py-2">Recommended</li>
+                            <li className="relative cursor-pointer group">
+                                <p className="flex items-center gap-[2px] font-semibold text-gray-500 dark:hover:text-white py-2"
+                                >
+                                    Products
+                                    <span>
+                                        <FaCaretDown className="group-hover:rotate-180 duration-300" />
+                                    </span>
+                                </p>
+
+                                {/* Dropdown Links */}
+                                <div className="absolute z-[9999] hidden group-hover:block w-[200px] rounded-md bg-white shadow-md dark:bg-gray-900 p-2 dark:text-white ">
+                                    <ul className="space-y-2">
+                                        {DropdownLinks.map((data, index) => (
+                                            <li>
+                                                <a
+                                                    className="text-gray-500  dark:hover:text-white duration-200 inline-block w-full p-2 hover:bg-primary/20 rounded-md font-semibold"
+                                                    href={data.link}
+                                                >
+                                                    {data.name}
+                                                </a>
+                                            </li>
+                                        ))}
+                                    </ul>
+                                </div>
+                            </li>
+                        </ul>
                     </div>
                 </div>
             )}
+
+            {/* <DropDown /> */}
+            <div className="container mx-auto mt-8">
+                <Carousel images={images} />
+            </div>
         </div>
     );
 };
 export default Navbar;
-
-// export default function Navbar() {
-//     const [isMenuOpen, setMenuOpen] = useState(false);
-
-//     const toggleMenu = () => {
-//         setMenuOpen(!isMenuOpen);
-//     };
-
-//     const closeMenu = () => {
-//         setMenuOpen(false);
-//     };
-
-//     return (
-//         <div className="flex sm:items-center sm:justify-between sm:mx-10 sm:gap-8 gap-2 mx-2 mt-4">
-
-//             {/* left */}
-//             <div className="flex-shrink-0">
-//                 <img src={Logo} alt="Logo" className="sm:w-20 sm:h-20 w-10 h-10" />
-//             </div>
-
-//             {/* middle 1*/}
-//             <div className="sm:flex-grow sm:flex-col">
-//                 <div className="sm:flex sm:my-6 my-2">
-
-//                     <button className="sm:p-4 text-black absolute p-2">
-//                         <CiSearch className="sm:w-4" />
-//                     </button>
-
-//                     <input
-//                         type="search"
-//                         placeholder="Search Any Product"
-//                         className="sm:pl-12 sm:pr-48 sm:py-2 sm:border pl-8 py-2 text-xs"
-//                     />
-//                 </div>
-//             </div>
-
-//             {/* Hamburger Menu Button */}
-//             <button
-//                 className="sm:hidden p-2"
-//                 onClick={toggleMenu}
-//             >
-//                 {isMenuOpen ? (
-//                     <FaTimes className="w-4" onClick={closeMenu} />
-//                 ) : (
-//                     <FaBars className="w-4" />
-//                 )}
-//             </button>
-
-//             {/* Full-screen Hamburger Menu - Visible on Small Devices */}
-//             {isMenuOpen && (
-//                 <div className="fixed top-0 left-0 w-full h-full bg-white z-50">
-//                     <div className="flex flex-col gap-4 font-medium my-4 mx-4">
-//                         <h1>Home</h1>
-//                         <h1>Shop</h1>
-//                         <h1>Featured</h1>
-//                         <h1>Recommended</h1>
-//                         <button className="bg-white p-2" onClick={closeMenu}>Sign Up</button>
-//                         <button className="bg-[#d52ffa] p-2" onClick={closeMenu}>Sign In</button>
-//                     </div>
-//                 </div>
-//             )}
-//         </div>
-//     );
-// }
-
-
