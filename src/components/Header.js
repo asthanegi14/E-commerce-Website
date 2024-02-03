@@ -1,8 +1,8 @@
 import React from "react";
-import Slider from "./Slider";
+// import Slider from "./Slider";
 import PicImage from "../images/header_img.png"
-import B1 from '../images/b1.jpeg';
-import B2 from '../images/b2.jpeg';
+// import B1 from '../images/b1.jpeg';
+// import B2 from '../images/b2.jpeg';
 
 export default function Header() {
     return (
