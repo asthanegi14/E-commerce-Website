@@ -2,12 +2,12 @@
 
 import React from "react";
 import { FaCaretDown } from "react-icons/fa6";
-import N1 from '../images/n1.jpeg';
-import N2 from '../images/n2.jpeg';
+// import N1 from '../images/n1.jpeg';
+// import N2 from '../images/n2.jpeg';
 import N3 from '../images/n3.jpeg';
-import N4 from '../images/n4.jpeg';
+// import N4 from '../images/n4.jpeg';
 import N5 from '../images/n5.webp';
-import N6 from '../images/n6.jpeg';
+// import N6 from '../images/n6.jpeg';
 
 const DropdownFashion = [
   { id: 1, name: "Mens", link: "/#" },
@@ -36,7 +36,7 @@ const Dropdown = ({ handleOrderPopup }) => {
                   >
                     <img
                       src={index % 2 === 0 ? N3 : N5}
-                      alt={`image${index}`}
+                      alt={`image1${index}`}
                       className="w-fit h-20 rounded justify-center"
                     />
                     <p className="flex items-center gap-[2px] font-semibold text-gray-500 dark:hover:text-white py-2">

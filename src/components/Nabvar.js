@@ -3,7 +3,7 @@ import { useRef } from "react";
 import { IoMdSearch } from "react-icons/io";
 import { FaCaretDown, FaCartShopping } from "react-icons/fa6";
 import { FaBars, FaTimes } from "react-icons/fa";
-import DropDown from './DropDown';
+// import DropDown from './DropDown';
 import Carousel from "./Coursole";
 import B1 from '../images/b1.avif';
 import B2 from '../images/b2.avif';
